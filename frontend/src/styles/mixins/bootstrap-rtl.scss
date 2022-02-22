@@ -1,4 +1,0 @@
-@mixin make-col-offset($size, $columns: $grid-columns) {
-  $num: $size / $columns;
-  margin-right: if($num == 0, 0, percentage($num));
-}
