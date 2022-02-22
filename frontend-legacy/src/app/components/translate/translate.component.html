@@ -1,0 +1,73 @@
+<app-loading [isLoading]="loading"></app-loading>
+<div class="container" *ngIf="showTranslationForm == false">
+  <div class="card">
+    <div class="card-body">
+      <div class="card-text">
+        <form #frm="ngForm" (ngSubmit)="searchForTranslation()">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6">
+              <mat-form-field class="full-width">
+                <mat-label>Source Language</mat-label>
+                <mat-select name="from_language" [(ngModel)]="wordToTranslate.from_language">
+                  <mat-option *ngFor="let lang of basicInfo.languages" [value]="lang.value">
+                    {{lang.label}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <mat-form-field class="full-width">
+                <mat-label>Destination Language</mat-label>
+                <mat-select name="to_language" [(ngModel)]="wordToTranslate.to_language">
+                  <mat-option *ngFor="let lang of basicInfo.languages" [value]="lang.value">
+                    {{lang.label}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-10">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Word" class="ltr" autocomplete="off" [(ngModel)]="wordToTranslate.word" name="word" id="word" (keyup)="wordChanged()">
+              </mat-form-field>
+            </div>
+            <div class="col-xs-12 col-sm-2">
+              <button mat-raised-button color="accent" class="full-width" type="submit">Search</button>
+            </div>
+            <div class="col-xs-12 col-sm-12 ltr" *ngIf="wordToTranslate.word" >
+              <b class="f13 ml-1" id="the_word">{{wordToTranslate.word}}</b>
+            </div>
+            <div class="col-xs-12 col-sm-12">
+              <a *ngIf="wordToTranslate.word" (click)="wordService.speak(wordToTranslate.word)" class="text-primary mr-3 pointer">
+                <fa-icon [icon]="['fas', 'volume-up']"></fa-icon>
+              </a>
+              <a *ngIf="wordToTranslate.word" (click)="wordService.copyToClipboard('the_word')" class="text-primary mr-3 pointer">
+                <fa-icon [icon]="['fas', 'copy']"></fa-icon>
+              </a>
+              <a *ngIf="wordToTranslate.word" (click)="translateUsingGoogle(wordToTranslate.word)" class="text-primary mr-3 pointer">
+                <fa-icon [icon]="['fas', 'retweet']"></fa-icon>
+              </a>
+              <a *ngIf="word" mat-button [routerLink]="['/userarea/word/', word.id, 'edit']" [queryParams]="{from_page: 'translate'}" color="warn">Edit</a>
+            </div>
+            <div *ngIf="wordToTranslate.word" class="col-xs-12 col-sm-12">
+              <app-google-translator-render [word]="wordToTranslate.word" [translationData]="googleTranslateData"></app-google-translator-render>
+            </div>
+            <div class="col-xs-12 col-sm-12 mt-3" *ngIf="wordDoesnotExist">
+              <button mat-raised-button color="primary" class="full-width f12" (click)="saveWord()" type="button"> 
+                Add Word To Phrasebook 
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container mt-3" *ngIf="word && showTranslationForm == false">
+  <a mat-raised-button color="accent" class="mt-3 mb-3 full-width" (click)="this.showTranslationForm = true; selectedTranslation = {};"> + Add Translation </a>
+  <app-word-translations [word]="word" (editTranslation)="editTranslation($event)"></app-word-translations>
+</div>
+<div class="container mt-3" *ngIf="showTranslationForm">
+  <app-word-translation-form [word]="word" [basicInfo]="basicInfo" [translation]="selectedTranslation" (translationSaved)="translationSaved($event)" (closeInlineForm)="showTranslationForm=false;"></app-word-translation-form>
+</div>

@@ -1,0 +1,71 @@
+<app-loading [isLoading]="loading"></app-loading>
+<div class="">
+  <div class="card">
+    <button mat-button color="warn" class="close-button" type="button" (click)="closeForm()">close</button>
+    <div class="card-body">
+      <div class="card-text">
+        <form #frm="ngForm" (ngSubmit)="save()">
+          <div class="row">
+            <div class="col-xs-12 col-sm-12">
+              <i class="f13">                
+                {{word.word}}
+              </i>
+              <a (click)="translateUsingGoogle(word.word)" class="text-primary mr-3 pointer">
+                <fa-icon [icon]="['fas', 'retweet']"></fa-icon>
+              </a>
+            </div>
+            <div class="col-xs-12 col-sm-12">
+              <i> Source Language: {{word.language_alpha2code | uppercase}} </i>
+            </div>
+            <div class="col-xs-12 col-sm-12">
+              <app-google-translator-render [word]="word.word" [translationData]="googleTranslateData" (entryRowSelect)="entryRowSelect($event)"></app-google-translator-render>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-6">
+              <mat-form-field class="full-width">
+                <mat-label>Destination Language</mat-label>
+                <mat-select name="language_alpha2code" [(ngModel)]="translation.language_alpha2code" (selectionChange)="setLastLanguage()">
+                  <mat-option *ngFor="let lang of basicInfo.languages" [value]="lang.value">
+                    {{lang.label}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <mat-form-field class="full-width">
+                <mat-label>Part Of Speed</mat-label>
+                <mat-select name="part_of_speech_name" [(ngModel)]="translation.part_of_speech_name">
+                  <mat-option *ngFor="let lang of basicInfo.parts_of_speech" [value]="lang.value">
+                    {{lang.label}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12">
+              <mat-form-field class="full-width">
+                <textarea matInput placeholder="Translation" class="rtl text-right" rows="5" [(ngModel)]="translation.translation" name="translation"></textarea>
+              </mat-form-field>
+            </div>
+            <div class="col-xs-12 col-sm-12">
+              <mat-form-field class="full-width">
+                <textarea matInput placeholder="Definition" class="ltr text-left" rows="5" [(ngModel)]="translation.definition" name="definition"></textarea>
+              </mat-form-field>
+            </div>
+            <div class="col-xs-12 col-sm-12">
+              <mat-form-field class="full-width">
+                <textarea matInput placeholder="Example" class="ltr text-left" rows="5" [(ngModel)]="translation.example" name="example"></textarea>
+              </mat-form-field>
+            </div>
+            <div class="col-xs-12 col-sm-12">
+              <button mat-raised-button color="accent" class="full-width" type="submit">Save</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
