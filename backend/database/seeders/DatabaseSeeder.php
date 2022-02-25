@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(StepSeeder::class);
         $this->call(PartOfSpeechSeeder::class);
+        $this->call(LanguageSeeder::class);
     }
 }
