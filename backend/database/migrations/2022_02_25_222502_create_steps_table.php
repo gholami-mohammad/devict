@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('days')->unsigned();
-            $table->timestamps();
+            $table->timestampsTz();
         });
     }
 

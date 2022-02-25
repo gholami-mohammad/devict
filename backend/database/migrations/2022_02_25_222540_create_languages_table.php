@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string("name");
             $table->string("alpha2code", 2)->unique()->index();
             $table->string("dir", 3)->nullable();
-            $table->timestamps();
+            $table->timestampsTz();
         });
     }
 
