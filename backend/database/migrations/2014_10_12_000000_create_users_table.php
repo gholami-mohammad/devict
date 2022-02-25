@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestampTz('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean('enabled')->default(true);
             $table->rememberToken();
             $table->timestampsTz();
         });
