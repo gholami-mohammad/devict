@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
       next: res => {
         this.authService.authToken = res.token;
         this.authService.authenticatedUser = res.user;
-        this.router.navigate(['/']);
+        this.router.navigate(['/home']);
       },
       error: err => {
         if (err.errors) {

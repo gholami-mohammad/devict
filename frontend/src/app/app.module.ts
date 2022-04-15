@@ -7,11 +7,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { SecHeadersInterceptor } from './services/sec-headers.interceptor';
+import { WordIndexComponent } from './components/word-index/word-index.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    WordIndexComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
