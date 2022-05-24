@@ -11,6 +11,7 @@ import { WordIndexComponent } from './components/word-index/word-index.component
 import { HomeComponent } from './components/home/home.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { SimpleModalModule } from 'ngx-simple-modal';
+import { WordFormComponent } from './components/word-form/word-form.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { ErrorHandlerService } from './services/error-handler.service';
 import { ToastNoAnimationModule } from 'ngx-toastr';
@@ -23,7 +24,7 @@ import { ToastNoAnimationModule } from 'ngx-toastr';
     PaginationComponent,
     LoadingComponent,
     WordIndexComponent,
-    HomeComponent
+    WordFormComponent,
   ],
   imports: [
     BrowserModule,

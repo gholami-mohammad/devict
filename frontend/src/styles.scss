@@ -1,3 +1,5 @@
+@import '../node_modules/ngx-simple-modal/styles/simple-modal.scss';
+@import '~ngx-toastr/toastr';
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
 
 .rtl {
@@ -14,4 +16,15 @@
 
 .pointer {
   cursor: pointer;
+}
+
+.modal-full {
+  display: inline-block;
+  max-width: unset !important;
+}
+
+.actions {
+  button {
+    margin-right: 3px;
+  }
 }
