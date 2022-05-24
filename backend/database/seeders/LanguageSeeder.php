@@ -16,16 +16,22 @@ class LanguageSeeder extends Seeder
     public function run()
     {
         $langs = [
-            "fa" => "Persian فارسی",
-            "en" => "English"
+            [
+                'alpha2code' => 'fa',
+                'name' => 'Persian فارسی',
+                'dir' => 'rtl',
+            ],
+            [
+                'alpha2code' => 'en',
+                'name' => 'English',
+                'dir' => 'ltr',
+            ],
         ];
 
-        foreach ($langs as $k => $v) {
+        foreach ($langs as $v) {
             Language::updateOrCreate([
-                "alpha2code" => $k
-            ], [
-                "name" => $v
-            ]);
+                "alpha2code" => $v['alpha2code']
+            ], $v);
         }
     }
 }
