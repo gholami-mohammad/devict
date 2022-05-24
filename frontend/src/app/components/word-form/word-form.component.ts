@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { SimpleModalComponent } from 'ngx-simple-modal';
 import { ToastrService } from 'ngx-toastr';
+import { Translation } from 'src/app/models/translation';
 import { Word } from 'src/app/models/word';
 import { ErrorHandlerService } from 'src/app/services/error-handler.service';
 import { WordService } from 'src/app/services/word.service';
@@ -23,6 +24,10 @@ export class WordFormComponent extends SimpleModalComponent<{word: Word}, boolea
     if (!this.word.language_alpha2code) {
       this.word.language_alpha2code = 'en';
     }
+
+    if (this.word.id) {
+      this.getDetails();
+    }
   }
 
   save() {
@@ -41,6 +46,23 @@ export class WordFormComponent extends SimpleModalComponent<{word: Word}, boolea
         this.errors = this.errService.HandleResponseErrors(err);
         this.loading = false;
       },
+    });
+  }
+
+  getDetails() {
+    if (!this.word.id) {
+      return;
+    }
+    this.loading = true;
+    this.wordService.details(this.word.id).subscribe({
+      next: res => {
+        this.word = res;
+        this.loading = false;
+      },
+      error: err => {
+        this.errService.HandleResponseErrors(err);
+        this.loading = false;
+      }
     });
   }
 }

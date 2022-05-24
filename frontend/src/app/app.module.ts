@@ -15,6 +15,7 @@ import { WordFormComponent } from './components/word-form/word-form.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { ErrorHandlerService } from './services/error-handler.service';
 import { ToastNoAnimationModule } from 'ngx-toastr';
+import { WordTranslationsIndexRenderComponent } from './components/word-translations-index-render/word-translations-index-render.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ToastNoAnimationModule } from 'ngx-toastr';
     LoadingComponent,
     WordIndexComponent,
     WordFormComponent,
+    WordTranslationsIndexRenderComponent,
   ],
   imports: [
     BrowserModule,

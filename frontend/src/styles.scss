@@ -10,6 +10,14 @@
   direction: ltr !important;
 }
 
+.align-right {
+  text-align: right;
+}
+
+.align-left {
+  text-align: left;
+}
+
 .nl2br {
   white-space: pre-line;
 }
@@ -22,9 +30,19 @@
   display: inline-block;
   max-width: unset !important;
 }
+.modal-scrollable {
+  .modal-body {
+    height: 60vh;
+    overflow-y: scroll;
+  }
+}
 
 .actions {
   button {
     margin-right: 3px;
   }
+}
+
+.btn-wide {
+  width: 11rem;
 }

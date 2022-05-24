@@ -20,6 +20,11 @@ export class WordService {
     return this.http.post<SaveResponse<Word>>(path, word);
   }
 
+  details(wordID: number) {
+    const path = `/api/words/${wordID}`;
+    return this.http.get<Word>(path);
+  }
+
   delete(wordID: number) {
     const path = `/api/words/${wordID}`;
     return this.http.delete<MessageResponse>(path);

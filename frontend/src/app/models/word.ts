@@ -14,6 +14,6 @@ export class Word {
   created_at?: string;
   updated_at?: string;
 
-  translations?: Translation[];
+  translations!: Translation[];
   reviews?: Review[];
 }
