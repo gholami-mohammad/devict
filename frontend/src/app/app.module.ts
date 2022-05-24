@@ -32,7 +32,7 @@ import { ToastNoAnimationModule } from 'ngx-toastr';
     FormsModule,
     SimpleModalModule.forRoot({ container: 'modal-container'}, {
       closeOnEscape: true,
-      closeOnClickOutside: true,
+      closeOnClickOutside: false,
       wrapperDefaultClasses: 'modal',
       wrapperClass: 'o-modal',
       animationDuration: 300,
