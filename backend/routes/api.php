@@ -26,5 +26,6 @@ Route::middleware('auth:sanctum')->prefix('words')->group(function () {
     Route::get('/', [WordController::class, 'index']);
     Route::post('/', [WordController::class, 'store']);
     Route::post('/{word}', [WordController::class, 'update']);
+    Route::get('/{word}', [WordController::class, 'show']);
     Route::delete('/{word}', [WordController::class, 'destroy']);
 });

@@ -70,6 +70,7 @@ class WordController extends Controller
     {
         $this->authorize('view', $word);
         $word->translations;
+        $word->reviews;
         return response()->json($word);
     }
 
