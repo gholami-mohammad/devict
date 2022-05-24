@@ -1,3 +1,5 @@
+import { Translation } from './translation';
+import { Review } from './review';
 export class Word {
   id?: number;
   word!: string;
@@ -9,4 +11,9 @@ export class Word {
   total_reviews_count?: number;
   last_review?: string;
   archived!: boolean;
+  created_at?: string;
+  updated_at?: string;
+
+  translations?: Translation[];
+  reviews?: Review[];
 }
