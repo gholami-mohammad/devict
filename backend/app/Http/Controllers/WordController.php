@@ -19,7 +19,7 @@ class WordController extends Controller
     {
         $user = Auth::user();
 
-        $items = Word::with(['reviews', 'translations']);
+        $items = Word::with(['reviews']);
 
         $todayReview = $r->input('today_review', null);
         if ($todayReview && ($todayReview == true || $todayReview == 'true')) {
@@ -69,8 +69,7 @@ class WordController extends Controller
     public function show(Word $word)
     {
         $this->authorize('view', $word);
-        $word->translations;
-        $word->reviews;
+        $word->load(['translations', 'reviews']);
         return response()->json($word);
     }
 
