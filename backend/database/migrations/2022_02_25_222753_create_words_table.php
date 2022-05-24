@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('words', function (Blueprint $table) {
             $table->id();
-            $table->text('word');
+            $table->string('word', 512)->index();
             $table->string('language_alpha2code', 2);
             $table->bigInteger('created_by_id')->unsigned()->nullable();
             $table->bigInteger('step_id')->unsigned()->nullable();
