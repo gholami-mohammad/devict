@@ -1,6 +1,7 @@
-@import '../node_modules/ngx-simple-modal/styles/simple-modal.scss';
+@import '~ngx-simple-modal/styles/simple-modal.scss';
 @import '~ngx-toastr/toastr';
-@import '../node_modules/bootstrap/scss/bootstrap.scss';
+@import '~bootstrap/scss/bootstrap.scss';
+@import "~@ng-select/ng-select/themes/default.theme.css";
 
 .rtl {
   direction: rtl !important;
@@ -32,7 +33,7 @@
 }
 .modal-scrollable {
   .modal-body {
-    height: 60vh;
+    height: 70vh;
     overflow-y: scroll;
   }
 }
