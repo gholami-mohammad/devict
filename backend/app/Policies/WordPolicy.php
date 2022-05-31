@@ -77,7 +77,7 @@ class WordPolicy
      */
     public function restore(User $user, Word $word)
     {
-        //
+        return $word->created_by_id == $user->id;
     }
 
     /**
@@ -89,6 +89,6 @@ class WordPolicy
      */
     public function forceDelete(User $user, Word $word)
     {
-        //
+        return $word->created_by_id == $user->id;
     }
 }
