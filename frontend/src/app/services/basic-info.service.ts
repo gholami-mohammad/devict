@@ -9,7 +9,7 @@ export class BasicInfoService {
   constructor(private http: HttpClient) { }
 
   get(items: string[]) {
-    return this.http.get<any[]>(`/api/basic_info`, {
+    return this.http.get<any[]>(`/api/basic-info`, {
       params: new HttpParams().append('items', items.join(',')),
     });
   }

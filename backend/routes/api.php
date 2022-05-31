@@ -24,7 +24,7 @@ Route::middleware('auth:sanctum')->get('/whoami', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('auth:sanctum')->get('/basic_info', [BasicInfoController::class, 'basicInfo']);
+Route::middleware('auth:sanctum')->get('/basic-info', [BasicInfoController::class, 'basicInfo']);
 
 Route::middleware('auth:sanctum')->prefix('words')->group(function () {
     Route::get('/', [WordController::class, 'index']);
