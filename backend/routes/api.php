@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BasicInfoController;
+use App\Http\Controllers\GoogleTranslateController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TranslationController;
 use App\Http\Controllers\WordController;
@@ -25,6 +26,7 @@ Route::middleware('auth:sanctum')->get('/whoami', function (Request $request) {
 });
 
 Route::middleware('auth:sanctum')->get('/basic-info', [BasicInfoController::class, 'basicInfo']);
+Route::middleware('auth:sanctum')->get('/third-party-translator/google', [GoogleTranslateController::class, 'translate']);
 
 Route::middleware('auth:sanctum')->prefix('words')->group(function () {
     Route::get('/', [WordController::class, 'index']);
