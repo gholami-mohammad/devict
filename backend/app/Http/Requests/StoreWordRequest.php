@@ -2,9 +2,10 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\LanguageExists;
+use App\Models\Language;
 use App\Rules\WordUnique;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreWordRequest extends FormRequest
 {
@@ -27,7 +28,7 @@ class StoreWordRequest extends FormRequest
     {
         return [
             'word' => ['required', new WordUnique(null)],
-            'language_alpha2code' => ['required', new LanguageExists()],
+            'language_alpha2code' => ['required', Rule::exists((new Language())->getTable(), 'alpha2code')],
         ];
     }
 }
