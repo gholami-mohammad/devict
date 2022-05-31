@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BasicInfoController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\WordController;
 use Illuminate\Http\Request;
@@ -21,6 +22,8 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::middleware('auth:sanctum')->get('/whoami', function (Request $request) {
     return $request->user();
 });
+
+Route::middleware('auth:sanctum')->get('/basic_info', [BasicInfoController::class, 'basicInfo']);
 
 Route::middleware('auth:sanctum')->prefix('words')->group(function () {
     Route::get('/', [WordController::class, 'index']);
