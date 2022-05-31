@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { SimpleModalComponent } from 'ngx-simple-modal';
 import { ToastrService } from 'ngx-toastr';
+import { SelectedTranslation } from 'src/app/models/third-party-translation';
 import { Translation } from 'src/app/models/translation';
 import { Word } from 'src/app/models/word';
 import { BasicInfoService } from 'src/app/services/basic-info.service';
@@ -77,4 +78,11 @@ export class TranslationFormComponent extends SimpleModalComponent<{word: Word, 
     });
   }
 
+
+  selectedEntryOfThirdParty(e: SelectedTranslation) {
+    this.translation.translation = e.translation;
+    this.translation.definition =  e.synonyms.join(', ');
+    this.translation.example = e.examples.join('\n');
+    this.translation.part_of_speech_name = e.part_of_speech;
+  }
 }

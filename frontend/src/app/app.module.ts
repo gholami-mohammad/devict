@@ -18,6 +18,7 @@ import { ToastNoAnimationModule } from 'ngx-toastr';
 import { TranslationFormComponent } from './components/translation-form/translation-form.component';
 import { TranslationIndexComponent } from './components/translation-index/translation-index.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { GoogleTranslatorComponent } from './components/google-translator/google-translator.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     WordFormComponent,
     TranslationFormComponent,
     TranslationIndexComponent,
+    GoogleTranslatorComponent,
   ],
   imports: [
     BrowserModule,
