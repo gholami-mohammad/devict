@@ -15,6 +15,8 @@ import { WordFormComponent } from './components/word-form/word-form.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { ErrorHandlerService } from './services/error-handler.service';
 import { ToastNoAnimationModule } from 'ngx-toastr';
+import { TranslationFormComponent } from './components/translation-form/translation-form.component';
+import { TranslationIndexComponent } from './components/translation-index/translation-index.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
@@ -26,7 +28,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     LoadingComponent,
     WordIndexComponent,
     WordFormComponent,
-    WordTranslationsIndexRenderComponent,
+    TranslationFormComponent,
+    TranslationIndexComponent,
   ],
   imports: [
     BrowserModule,

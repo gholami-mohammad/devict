@@ -1,0 +1,42 @@
+<div class="modal-content modal-full modal-scrollable">
+  <app-loading [loading]="loading"></app-loading>
+  <div class="modal-header">
+    <h4>Create/Edit Translation for "{{word.word}}"</h4>
+  </div>
+  <div class="modal-body">
+
+    <form #form="ngForm" (submit)="save()">
+      <button type="submit" style="display:none">hidden submit</button>
+      <div class="mb-3">
+        <label for="part_of_speech_name" class="form-label">Part Of Speech</label>
+        <ng-select [(ngModel)]="translation.part_of_speech_name" [items]="basicInfo.parts_of_speech" bindLabel="name" bindValue="name"></ng-select>
+        <small id="part_of_speech_name-help" class="form-text text-danger" *ngIf="errors && errors.part_of_speech_name">{{errors.part_of_speech_name[0]}}</small>
+      </div>
+
+      <div class="mb-3">
+        <label for="translation" class="form-label">Translation</label>
+        <input [(ngModel)]="translation.translation" type="text" autocomplete="off"
+          class="form-control rtl" name="translation" id="translation" aria-describedby="translation-help" placeholder="Translation">
+        <small id="translation-help" class="form-text text-danger" *ngIf="errors && errors.translation">{{errors.translation[0]}}</small>
+      </div>
+
+      <div class="mb-3">
+        <label for="definition" class="form-label">Definition</label>
+        <textarea [(ngModel)]="translation.definition" class="form-control" name="definition" id="definition" aria-describedby="definition-help" placeholder="Definition" rows="3"></textarea>
+        <small id="definition-help" class="form-text text-danger" *ngIf="errors && errors.definition">{{errors.definition[0]}}</small>
+      </div>
+
+      <div class="mb-3">
+        <label for="example" class="form-label">Example</label>
+        <textarea [(ngModel)]="translation.example" class="form-control" name="example" id="example" aria-describedby="example-help" placeholder="Example" rows="3"></textarea>
+        <small id="example-help" class="form-text text-danger" *ngIf="errors && errors.example">{{errors.example[0]}}</small>
+      </div>
+
+    </form>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-danger" (click)="close()" >Close</button>
+    <button type="submit" class="btn btn-primary btn-wide" (click)="save()">Save</button>
+  </div>
+</div>

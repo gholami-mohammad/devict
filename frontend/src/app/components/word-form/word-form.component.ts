@@ -2,7 +2,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { SimpleModalComponent } from 'ngx-simple-modal';
 import { ToastrService } from 'ngx-toastr';
-import { Translation } from 'src/app/models/translation';
 import { Word } from 'src/app/models/word';
 import { ErrorHandlerService } from 'src/app/services/error-handler.service';
 import { WordService } from 'src/app/services/word.service';

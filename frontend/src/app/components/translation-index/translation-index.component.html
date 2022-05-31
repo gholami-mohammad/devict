@@ -1,10 +1,19 @@
 <div class="card-deck">
-  <h5>Translations</h5>
+  <h5>
+    Translations
+    <small>
+      <button class="btn btn-primary" (click)="add()">New</button>
+    </small>
+  </h5>
 
   <div class="card mt-4" *ngFor="let translation of translations">
     <div class="card-body">
       <div class="row">
-        <div class="mb-3 pb-3 border-bottom">
+        <div class="actions">
+          <button class="btn btn-primary" (click)="edit(translation)">Edit</button>
+          <button class="btn btn-danger" (click)="delete(translation)">Delete</button>
+        </div>
+        <div class="mt-1 mb-3 pb-3 border-bottom">
           <label for="translation" class="form-label text-primary">Translation</label>
           <div class="col-12 rtl align-right">
             {{translation.translation}}

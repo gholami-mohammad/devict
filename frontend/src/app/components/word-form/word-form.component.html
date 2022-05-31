@@ -12,13 +12,10 @@
           class="form-control" name="word" id="word" aria-describedby="word-help" placeholder="Word">
         <small id="word-help" class="form-text text-danger" *ngIf="errors && errors.word">{{errors.word[0]}}</small>
       </div>
-      <div>
-
-      </div>
     </form>
 
     <div class="mt-4" *ngIf="word.id">
-      <app-word-translations-index-render [translations]="word.translations"></app-word-translations-index-render>
+      <app-translation-index [word]="word"></app-translation-index>
     </div>
 
   </div>
