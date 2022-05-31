@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BasicInfoController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\TranslationController;
 use App\Http\Controllers\WordController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -31,4 +32,12 @@ Route::middleware('auth:sanctum')->prefix('words')->group(function () {
     Route::post('/{word}', [WordController::class, 'update']);
     Route::get('/{word}', [WordController::class, 'show']);
     Route::delete('/{word}', [WordController::class, 'destroy']);
+});
+
+Route::middleware('auth:sanctum')->prefix('/translations')->group(function () {
+    Route::get('/', [TranslationController::class, 'index']);
+    Route::post('/', [TranslationController::class, 'store']);
+    Route::post('/{translation}', [TranslationController::class, 'update']);
+    Route::get('/{translation}', [TranslationController::class, 'show']);
+    Route::delete('/{translation}', [TranslationController::class, 'destroy']);
 });
