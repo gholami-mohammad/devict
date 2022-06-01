@@ -1,8 +1,9 @@
-<a (click)="translateUsingGoogle(word)" class="text-primary mr-3 pointer">
-  <span *ngIf="!loading">Translate</span>
-  <span *ngIf="loading">Translating...</span>
-</a>
-<div *ngIf="googleTranslateData" class="col-xs-12 col-sm-12">
+<div class="translate" *ngIf="word">
+  <span class="text-primary" (click)="translateUsingGoogle(word)" *ngIf="!loading">Translate</span>
+  <span class="text-primary" (click)="translateUsingGoogle(word)" *ngIf="loading">Translating...</span>
+  <i class="bi bi-x-circle text-muted" (click)="clear()" *ngIf="googleTranslateData"></i>
+</div>
+<div *ngIf="word && googleTranslateData" class="col-xs-12 col-sm-12">
   <ul>
     <li *ngFor="let d of googleTranslateData.dict">
       <div class="pos">{{d.pos}}:</div>
@@ -15,7 +16,7 @@
         {{e.reverse_translation.join(', ')}}
       </div>
     </li>
-    <li>Sentences</li>
+    <!-- <li>Sentences</li> -->
     <!-- <li *ngFor="let d of googleTranslateData.sentences">
       <a (click)="getEntryRowClicked(d)" class="pointer text-primary">
 

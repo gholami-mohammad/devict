@@ -11,7 +11,18 @@ import { Entry, GoogleTranslateResponse } from './google-translate-model';
 })
 export class GoogleTranslatorComponent implements OnInit {
 
-  @Input() word!: string;
+  private _word: string = '';
+  @Input()
+  set word(w: string) {
+    this._word = w;
+    if (!w || w == '') {
+      this.googleTranslateData = undefined;
+    }
+  };
+
+  get word(): string {
+    return this._word ?? '';
+  }
 
   @Output() selectedEntry: EventEmitter<SelectedTranslation> = new EventEmitter();
 
@@ -62,6 +73,10 @@ export class GoogleTranslatorComponent implements OnInit {
         this.loading = false;
       },
     });
+  }
+
+  clear() {
+    this.googleTranslateData = undefined;
   }
 
 }
