@@ -19,17 +19,7 @@ class WordController extends Controller
     {
         $user = Auth::user();
 
-        $items = Word::with(['reviews']);
-
-        $todayReview = $r->input('today_review', null);
-        if ($todayReview && ($todayReview == true || $todayReview == 'true')) {
-            $items = $items->whereRaw('(
-            (words.step_id IS NULL and words.archived = 0) OR
-            (SELECT DATE_ADD(words.last_review, INTERVAL (SELECT days from steps where words.step_id = steps.id) DAY) ) <= (SELECT DATE_ADD(?, INTERVAL 8 HOUR) ) OR
-            (words.last_review >=  DATE_ADD(?, INTERVAL -1 MINUTE) )
-            )', [new \DateTime(), new \DateTime()]);
-        }
-        $items = $items
+        $items = Word::with(['reviews'])
         ->where('created_by_id', $user->id)
         ->orderBy('step_id', 'desc')
         ->orderBy('id', 'desc')
