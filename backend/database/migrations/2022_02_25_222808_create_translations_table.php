@@ -22,12 +22,6 @@ return new class extends Migration
             $table->string("translation", 512);
             $table->text("definition")->nullable();
             $table->text("example")->nullable();
-            $table->bigInteger('step_id')->unsigned()->nullable();
-            $table->integer('success_reviews_count')->default(0);
-            $table->integer('fail_reviews_count')->default(0);
-            $table->integer('total_reviews_count')->default(0);
-            $table->dateTimeTz('last_review')->nullable();
-            $table->boolean('archived')->default(false);
             $table->timestampsTz();
 
             $table->foreign("word_id")
@@ -49,12 +43,6 @@ return new class extends Migration
             $table->foreign('language_alpha2code')
                 ->on('languages')
                 ->references('alpha2code')
-                ->onDelete('RESTRICT')
-                ->onUpdate('CASCADE');
-
-            $table->foreign('step_id')
-                ->on('steps')
-                ->references('id')
                 ->onDelete('RESTRICT')
                 ->onUpdate('CASCADE');
         });

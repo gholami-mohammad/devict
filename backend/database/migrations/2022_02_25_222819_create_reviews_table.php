@@ -15,11 +15,16 @@ return new class extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->string('review_type', 2)->comment('w: review words to remember translations; t: review translations to remember words');
-            $table->bigInteger('item_id')->unsigned();
+            $table->bigInteger('word_id')->unsigned();
             $table->bigInteger('step_id')->unsigned()->nullable();
             $table->boolean('remembered');
             $table->timestamps();
+
+            $table->foreign('word_id')
+            ->on('words')
+            ->references('id')
+            ->onDelete('CASCADE')
+            ->onUpdate('CASCADE');
 
             $table->foreign('step_id')
             ->on('steps')
