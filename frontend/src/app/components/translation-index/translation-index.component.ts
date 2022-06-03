@@ -15,22 +15,25 @@ import { TranslationFormComponent } from '../translation-form/translation-form.c
 export class TranslationIndexComponent implements OnInit {
 
   @Input() word: Word = new Word();
+  @Input() loadTranslations = true;
   loading = true;
-  translations: Translation[] = [];
 
   constructor(private translationService: TranslationService, private modal: SimpleModalService, private errService: ErrorHandlerService, private toastr: ToastrService) {}
 
   ngOnInit(): void {
-    this.index();
+    if (this.loadTranslations) {
+      this.index();
+    }
   }
 
   index() {
     return this.translationService.index(this.word.id ?? 0, 'fa').subscribe({
       next: res => {
-        this.translations = res;
+        this.word.translations = res;
         this.loading = false;
       },
       error: err => {
+        this.errService.HandleResponseErrors(err);
         this.loading = false;
       },
     });

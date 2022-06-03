@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { ReviewIndexComponent } from './components/review-index/review-index.component';
 import { WordIndexComponent } from './components/word-index/word-index.component';
 import { GaurdService } from './services/gaurd.service';
 
@@ -17,6 +18,7 @@ const routes: Routes = [
     children: [
       { path: 'home', component: HomeComponent },
       {path: 'words', component: WordIndexComponent},
+      {path: 'review', component: ReviewIndexComponent},
     ],
   }
 ];

@@ -19,6 +19,7 @@ import { TranslationFormComponent } from './components/translation-form/translat
 import { TranslationIndexComponent } from './components/translation-index/translation-index.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { GoogleTranslatorComponent } from './components/google-translator/google-translator.component';
+import { ReviewIndexComponent } from './components/review-index/review-index.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { GoogleTranslatorComponent } from './components/google-translator/google
     TranslationFormComponent,
     TranslationIndexComponent,
     GoogleTranslatorComponent,
+    ReviewIndexComponent,
   ],
   imports: [
     BrowserModule,
