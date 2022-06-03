@@ -2,7 +2,9 @@
   <h5>
     Translations
     <small *ngIf="word && word.id">
-      <button class="btn btn-primary btn-sm" (click)="add()">New</button>
+      <button class="btn btn-outline-primary btn-sm" (click)="add()">
+        <i class="bi bi-plus-lg"></i>
+      </button>
     </small>
   </h5>
 
@@ -10,8 +12,12 @@
     <div class="card-body">
       <div class="row">
         <div class="actions">
-          <button class="btn btn-primary btn-sm" (click)="edit(translation)">Edit</button>
-          <button class="btn btn-danger btn-sm" (click)="delete(translation)">Delete</button>
+          <button class="btn btn-outline-primary btn-sm" (click)="edit(translation)">
+            <i class="bi bi-pencil-square"></i>
+          </button>
+          <button class="btn btn-outline-danger btn-sm" (click)="delete(translation)">
+            <i class="bi bi-trash3"></i>
+          </button>
         </div>
         <div class="mt-1 mb-3 pb-3 border-bottom">
           <label for="translation" class="form-label text-primary">Translation</label>
