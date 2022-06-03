@@ -3,6 +3,7 @@
 use App\Http\Controllers\BasicInfoController;
 use App\Http\Controllers\GoogleTranslateController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\TranslationController;
 use App\Http\Controllers\WordController;
 use Illuminate\Http\Request;
@@ -42,4 +43,9 @@ Route::middleware('auth:sanctum')->prefix('/translations')->group(function () {
     Route::post('/{translation}', [TranslationController::class, 'update']);
     Route::get('/{translation}', [TranslationController::class, 'show']);
     Route::delete('/{translation}', [TranslationController::class, 'destroy']);
+});
+
+Route::middleware('auth:sanctum')->prefix('/review')->group(function () {
+    Route::get('/', [ReviewController::class, 'index']);
+    Route::post('/{word}', [ReviewController::class, 'store']);
 });
