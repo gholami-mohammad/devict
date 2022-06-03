@@ -1,0 +1,30 @@
+version: "3.7"
+networks:
+    dic_net:
+      driver: bridge
+secrets:
+    MYSQL_ROOT_PASSWORD:
+        file: ./secrets/MYSQL_ROOT_PASSWORD.txt
+    MYSQL_PASSWORD:
+        file: ./secrets/MYSQL_PASSWORD.txt
+services:
+    mysql:
+        container_name: dic-mysql
+        image: mysql:8.0
+        command: --default-authentication-plugin=mysql_native_password
+        restart: unless-stopped
+        secrets:
+            - MYSQL_ROOT_PASSWORD
+            - MYSQL_PASSWORD
+        environment:
+            MYSQL_ROOT_PASSWORD_FILE: /run/secrets/MYSQL_ROOT_PASSWORD
+            MYSQL_PASSWORD_FILE: /run/secrets/MYSQL_PASSWORD
+            MYSQL_DATABASE: dic
+            MYSQL_USER: dic
+            TZ: Asia/Tehran
+        volumes: 
+            - ./dbdata:/var/lib/mysql
+        ports:
+            - 3366:3306
+        networks:
+            - dic_net

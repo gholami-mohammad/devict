@@ -1,0 +1,27 @@
+<div class="translate" *ngIf="word">
+  <span class="text-primary" (click)="translateUsingGoogle(word)" *ngIf="!loading">Translate</span>
+  <span class="text-primary" (click)="translateUsingGoogle(word)" *ngIf="loading">Translating...</span>
+  <i class="bi bi-x-circle text-muted" (click)="clear()" *ngIf="googleTranslateData"></i>
+</div>
+<div *ngIf="word && googleTranslateData" class="col-xs-12 col-sm-12">
+  <ul>
+    <li *ngFor="let d of googleTranslateData.dict">
+      <div class="pos">{{d.pos}}:</div>
+      <div *ngFor="let e of d.entry" class="entry">
+        <span (click)="getEntryRowClicked(e, d.pos)" class="pointer text-primary">
+          <i class="bi bi-check-circle-fill"></i>
+        </span>
+        {{e.word}}
+        <br>
+        {{e.reverse_translation.join(', ')}}
+      </div>
+    </li>
+    <!-- <li>Sentences</li> -->
+    <!-- <li *ngFor="let d of googleTranslateData.sentences">
+      <a (click)="getEntryRowClicked(d)" class="pointer text-primary">
+
+      </a>
+      {{d.trans}}
+    </li> -->
+  </ul>
+</div>

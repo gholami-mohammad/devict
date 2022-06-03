@@ -1,0 +1,38 @@
+<app-loading [loading]="loading"></app-loading>
+<div class="card">
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>Word</th>
+            <th>
+              <button class="btn btn-outline-primary btn-sm" (click)="add()">
+                <i class="bi bi-plus-lg"></i>
+              </button>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let w of pagination.data">
+            <td>{{w.word}}</td>
+            <td class="actions">
+              <button class="btn btn-outline-primary" (click)="edit(w)">
+                <i class="bi bi-pencil-square"></i>
+              </button>
+              <button class="btn btn-outline-danger" (click)="delete(w)">
+                <i class="bi bi-trash3"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card-footer">
+    <app-pagination
+        [pagination]="pagination"
+        (gotopage)="index($event)"
+    ></app-pagination>
+  </div>
+</div>

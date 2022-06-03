@@ -1,0 +1,43 @@
+<div class="card-deck">
+  <h5>
+    Translations
+    <small *ngIf="word && word.id">
+      <button class="btn btn-outline-primary btn-sm" (click)="add()">
+        <i class="bi bi-plus-lg"></i>
+      </button>
+    </small>
+  </h5>
+
+  <div class="card mt-4" *ngFor="let translation of word.translations">
+    <div class="card-body">
+      <div class="row">
+        <div class="actions">
+          <button class="btn btn-outline-primary btn-sm" (click)="edit(translation)">
+            <i class="bi bi-pencil-square"></i>
+          </button>
+          <button class="btn btn-outline-danger btn-sm" (click)="delete(translation)">
+            <i class="bi bi-trash3"></i>
+          </button>
+        </div>
+        <div class="mt-1 mb-3 pb-3 border-bottom">
+          <label for="translation" class="form-label text-primary">Translation</label>
+          <div class="col-12 rtl align-right">
+            {{translation.translation}}
+          </div>
+        </div>
+        <div class="mb-3 pb-3 border-bottom">
+          <label for="definition" class="form-label text-info">Definition: </label>
+          <div class="col-12 ltr nl2br">
+            {{translation.definition}}
+          </div>
+        </div>
+        <div class="mb-3 pb-3">
+          <label for="example" class="form-label text-warning">Example: </label>
+          <div class="col-12 ltr nl2br">
+            {{translation.example}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

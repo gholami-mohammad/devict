@@ -1,0 +1,27 @@
+<div class="modal-content modal-full modal-scrollable">
+  <app-loading [loading]="loading"></app-loading>
+  <div class="modal-header">
+    <h4>Create/Edit Word</h4>
+  </div>
+  <div class="modal-body">
+
+    <form #form="ngForm" (submit)="save()">
+      <div class="mb-3">
+        <label for="word" class="form-label">Word</label>
+        <app-google-translator [word]="word.word"></app-google-translator>
+        <input [(ngModel)]="word.word" type="text" autocomplete="off"
+          class="form-control" name="word" id="word" aria-describedby="word-help" placeholder="Word">
+        <small id="word-help" class="form-text text-danger" *ngIf="errors && errors.word">{{errors.word[0]}}</small>
+      </div>
+    </form>
+
+    <div class="mt-4" *ngIf="word.id">
+      <app-translation-index [word]="word"></app-translation-index>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-danger" (click)="close()" >Close</button>
+    <button type="button" class="btn btn-outline-primary btn-wide" (click)="save()">Save</button>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<form #form="ngForm" (ngSubmit)="login()">
+  <div class="row">
+    <div class="col-12">
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" name="email" id="email" [(ngModel)]="credencials.email">
+        <div class="text text-danger" *ngIf="errors && errors.email">{{errors.email[0]}}</div>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" name="password" id="password" [(ngModel)]="credencials.password">
+        <div class="text text-danger" *ngIf="errors && errors.password">{{errors.password[0]}}</div>
+      </div>
+      <button type="submit" class="btn btn-primary">Login</button>
+    </div>
+  </div>
+</form>
+

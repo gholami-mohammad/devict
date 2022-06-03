@@ -1,0 +1,50 @@
+@import '~ngx-simple-modal/styles/simple-modal.scss';
+@import '~ngx-toastr/toastr';
+@import '~bootstrap/scss/bootstrap.scss';
+@import "~@ng-select/ng-select/themes/default.theme.css";
+@import "~bootstrap-icons/font/bootstrap-icons.scss";
+
+.rtl {
+  direction: rtl !important;
+}
+
+.ltr {
+  direction: ltr !important;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.nl2br {
+  white-space: pre-line;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.modal-full {
+  display: inline-block;
+  max-width: unset !important;
+}
+.modal-scrollable {
+  .modal-body {
+    height: 70vh;
+    overflow-y: scroll;
+  }
+}
+
+.actions {
+  button {
+    margin-right: 3px;
+  }
+}
+
+.btn-wide {
+  width: 11rem;
+}
