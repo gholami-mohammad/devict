@@ -17,6 +17,7 @@ class Word extends Model
 
     protected $casts = [
         'archived' => 'boolean',
+        'last_review' => 'datetime'
     ];
 
     /**
