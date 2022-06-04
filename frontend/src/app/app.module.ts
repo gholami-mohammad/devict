@@ -21,6 +21,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { GoogleTranslatorComponent } from './components/google-translator/google-translator.component';
 import { ReviewIndexComponent } from './components/review-index/review-index.component';
 import { TextToSpeechComponent } from './components/text-to-speech/text-to-speech.component';
+import { DatabaseBackupIndexComponent } from './components/database-backup-index/database-backup-index.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { TextToSpeechComponent } from './components/text-to-speech/text-to-speec
     GoogleTranslatorComponent,
     ReviewIndexComponent,
     TextToSpeechComponent,
+    DatabaseBackupIndexComponent,
   ],
   imports: [
     BrowserModule,

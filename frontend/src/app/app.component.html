@@ -8,10 +8,22 @@
     <div class="collapse navbar-collapse" id="collapsibleNavId">
       <ul class="navbar-nav me-auto mt-2 mt-lg-0">
         <li class="nav-item" *ngIf="authService.authenticatedUser">
-          <a class="nav-link" routerLink="/words">Words</a>
+          <a class="nav-link" routerLink="/words">
+            <i class="bi bi-book"></i>
+            Words
+          </a>
         </li>
         <li class="nav-item" *ngIf="authService.authenticatedUser">
-          <a class="nav-link" routerLink="/review">Review</a>
+          <a class="nav-link" routerLink="/review">
+            <i class="bi bi-clock-history"></i>
+            Review
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="authService.authenticatedUser">
+          <a class="nav-link" routerLink="/database-backups">
+            <i class="bi bi-cloud-check"></i>
+            Backup Database
+          </a>
         </li>
 
         <li class="nav-item" *ngIf="!authService.authenticatedUser">
@@ -20,7 +32,10 @@
 
         <li *ngIf="authService.authenticatedUser" class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">{{authService.authenticatedUser.name}}</a>
+            aria-expanded="false">
+            <i class="bi bi-person"></i>
+            {{authService.authenticatedUser.name}}
+          </a>
           <div class="dropdown-menu" aria-labelledby="dropdownId">
             <a class="dropdown-item" href="#">Logout</a>
           </div>

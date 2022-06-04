@@ -1,0 +1,28 @@
+.backup-row {
+  display: flex;
+  border-bottom: 1px solid rgb(199, 199, 199);
+  margin-top: 15px;
+  padding-bottom: 10px;
+
+  .filename {
+    padding-bottom: 4px;
+  }
+
+  .file-info {
+    font-size: smaller;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-between;
+    flex-direction: column;
+    margin-right: 10px;
+
+    i {
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+<app-loading [loading]="loading"></app-loading>
+<div class="card">
+  <div class="card-body">
+    <h3>Database Backups</h3>
+
+    <button class="btn btn-outline-primary btn-sm" (click)="take()" title="Take backup">
+      Take Bakup &nbsp;<i class="bi bi-save-fill"></i>
+    </button>
+
+    <div class="backup-row" *ngFor="let backup of backups">
+      <div class="actions">
+        <i class="bi bi-cloud-download text-info" (click)="download(backup)"></i>
+        <i class="bi bi-trash3 text-danger" (click)="delete(backup)"></i>
+      </div>
+      <div>
+        <div class="filename">
+          File Name: {{backup.name}}
+        </div>
+        <div class="file-info">
+          Size: <span class="text-danger">{{backup.size}}&nbsp;{{backup.size_in}}</span>
+          &nbsp;
+          &nbsp;
+          Taken At: <span class="text-danger">{{backup.created_at}}</span>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

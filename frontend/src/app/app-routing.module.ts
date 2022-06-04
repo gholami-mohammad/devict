@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { DatabaseBackupIndexComponent } from './components/database-backup-index/database-backup-index.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { ReviewIndexComponent } from './components/review-index/review-index.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent },
       {path: 'words', component: WordIndexComponent},
       {path: 'review', component: ReviewIndexComponent},
+      {path: 'database-backups', component: DatabaseBackupIndexComponent},
     ],
   }
 ];
