@@ -21,7 +21,6 @@ class WordController extends Controller
 
         $items = Word::with(['reviews'])
         ->where('created_by_id', $user->id)
-        ->orderBy('step_id', 'desc')
         ->orderBy('id', 'desc')
         ->paginate($r->input('per_page', 50));
 
