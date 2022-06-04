@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DatabaseBackupController;
 use App\Http\Controllers\BasicInfoController;
 use App\Http\Controllers\GoogleTranslateController;
 use App\Http\Controllers\LoginController;
@@ -48,4 +49,11 @@ Route::middleware('auth:sanctum')->prefix('/translations')->group(function () {
 Route::middleware('auth:sanctum')->prefix('/review')->group(function () {
     Route::get('/', [ReviewController::class, 'index']);
     Route::post('/{word}', [ReviewController::class, 'store']);
+});
+
+Route::middleware('auth:sanctum')->prefix('/database-backups')->group(function () {
+    Route::get('/', [DatabaseBackupController::class, 'index']);
+    Route::get('/take', [DatabaseBackupController::class, 'backup']);
+    Route::get('/{name}', [DatabaseBackupController::class, 'download']);
+    Route::delete('/{name}', [DatabaseBackupController::class, 'delete']);
 });
