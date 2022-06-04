@@ -1,10 +1,13 @@
 <app-loading [loading]="loading"></app-loading>
 <div class="card" *ngIf="reviewing">
   <div class="card-body">
-    <h1 class="text-center">
+    <h1 class="text-center word" (click)="showTranslations = !showTranslations">
       {{reviewing.word}}
+      <small class="word-info">
+        <i class="bi bi-info-circle-fill"></i>
+      </small>
     </h1>
-    <div>
+    <div *ngIf="showTranslations">
       <app-translation-index [word]="reviewing" [loadTranslations]="false"></app-translation-index>
     </div>
   </div>

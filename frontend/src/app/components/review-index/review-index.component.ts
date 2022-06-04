@@ -16,6 +16,7 @@ export class ReviewIndexComponent implements OnInit {
   loading = true;
   pagination: Pagination<Word> = new Pagination();
   page = 1;
+  showTranslations = false;
   lastIndex = 0;
   reviewingIndex = 0;
 
