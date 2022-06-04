@@ -1,4 +1,9 @@
 .wrapper {
   display: inline-block;
   position: relative;
+
+  .speak-btn {
+    padding-top: unset;
+    padding-bottom: unset;
+  }
 }

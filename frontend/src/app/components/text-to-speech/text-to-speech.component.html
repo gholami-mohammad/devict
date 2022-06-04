@@ -1,5 +1,5 @@
-<div class="wrapper">
-  <button class="btn btn-outline-primary" (click)="speak()">
+<div class="wrapper" *ngIf="text && text != ''">
+  <button class="btn text-info speak-btn" type="button" (click)="speak()">
     <i class="bi bi-volume-up-fill"></i>
   </button>
 </div>
