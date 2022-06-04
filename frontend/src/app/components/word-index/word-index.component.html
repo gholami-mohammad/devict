@@ -6,6 +6,7 @@
         <thead>
           <tr>
             <th>Word</th>
+            <th style="width: 110px">Review Info</th>
             <th>
               <button class="btn btn-outline-primary btn-sm" (click)="add()">
                 <i class="bi bi-plus-lg"></i>
@@ -16,6 +17,11 @@
         <tbody>
           <tr *ngFor="let w of pagination.data">
             <td>{{w.word}}</td>
+            <td>
+              <span class="badge bg-info m-1">{{w.total_reviews_count}}</span>
+              <span class="badge bg-success">{{w.success_reviews_count}}</span>
+              <span class="badge bg-danger m-1">{{w.fail_reviews_count}}</span>
+            </td>
             <td class="actions">
               <button class="btn btn-outline-primary" (click)="edit(w)">
                 <i class="bi bi-pencil-square"></i>
