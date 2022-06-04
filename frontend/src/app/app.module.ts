@@ -20,6 +20,7 @@ import { TranslationIndexComponent } from './components/translation-index/transl
 import { NgSelectModule } from '@ng-select/ng-select';
 import { GoogleTranslatorComponent } from './components/google-translator/google-translator.component';
 import { ReviewIndexComponent } from './components/review-index/review-index.component';
+import { TextToSpeechComponent } from './components/text-to-speech/text-to-speech.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ReviewIndexComponent } from './components/review-index/review-index.com
     TranslationIndexComponent,
     GoogleTranslatorComponent,
     ReviewIndexComponent,
+    TextToSpeechComponent,
   ],
   imports: [
     BrowserModule,
