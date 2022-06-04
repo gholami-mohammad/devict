@@ -1,7 +1,10 @@
 <div class="modal-content modal-full modal-scrollable">
   <app-loading [loading]="loading"></app-loading>
   <div class="modal-header">
-    <h4>Create/Edit Translation for "{{word.word}}"</h4>
+    <h4>
+      Create/Edit Translation for "{{word.word}}"
+      <app-text-to-speech [text]="word.word"></app-text-to-speech>
+    </h4>
   </div>
   <div class="modal-body">
 
@@ -23,12 +26,14 @@
 
       <div class="mb-3">
         <label for="definition" class="form-label">Definition</label>
+        <app-text-to-speech [text]="translation.definition ?? ''"></app-text-to-speech>
         <textarea [(ngModel)]="translation.definition" class="form-control" name="definition" id="definition" aria-describedby="definition-help" placeholder="Definition" rows="3"></textarea>
         <small id="definition-help" class="form-text text-danger" *ngIf="errors && errors.definition">{{errors.definition[0]}}</small>
       </div>
 
       <div class="mb-3">
         <label for="example" class="form-label">Example</label>
+        <app-text-to-speech [text]="translation.example ?? ''"></app-text-to-speech>
         <textarea [(ngModel)]="translation.example" class="form-control" name="example" id="example" aria-describedby="example-help" placeholder="Example" rows="3"></textarea>
         <small id="example-help" class="form-text text-danger" *ngIf="errors && errors.example">{{errors.example[0]}}</small>
       </div>

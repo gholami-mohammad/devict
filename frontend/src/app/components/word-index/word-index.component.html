@@ -23,6 +23,7 @@
               <button class="btn btn-outline-danger" (click)="delete(w)">
                 <i class="bi bi-trash3"></i>
               </button>
+              <app-text-to-speech [text]="w.word"></app-text-to-speech>
             </td>
           </tr>
         </tbody>

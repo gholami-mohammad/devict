@@ -9,6 +9,7 @@
       <div class="mb-3">
         <label for="word" class="form-label">Word</label>
         <app-google-translator [word]="word.word"></app-google-translator>
+        <app-text-to-speech [text]="word.word"></app-text-to-speech>
         <input [(ngModel)]="word.word" type="text" autocomplete="off"
           class="form-control" name="word" id="word" aria-describedby="word-help" placeholder="Word">
         <small id="word-help" class="form-text text-danger" *ngIf="errors && errors.word">{{errors.word[0]}}</small>
