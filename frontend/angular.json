@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "devict": {
+    "phrase-book": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,12 +23,13 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/devict",
+            "outputPath": "dist/phrase-book",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
+            "sourceMap": false,
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -75,10 +76,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "devict:build:production"
+              "browserTarget": "phrase-book:build:production"
             },
             "development": {
-              "browserTarget": "devict:build:development"
+              "browserTarget": "phrase-book:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -86,7 +87,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "devict:build"
+            "browserTarget": "phrase-book:build"
           }
         },
         "test": {
@@ -110,5 +111,5 @@
       }
     }
   },
-  "defaultProject": "devict"
+  "defaultProject": "phrase-book"
 }
