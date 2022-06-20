@@ -1,0 +1,66 @@
+version: "3.7"
+networks:
+    phrasebook_net:
+        driver: bridge
+secrets:
+    MYSQL_ROOT_PASSWORD:
+        file: ./secrets/MYSQL_ROOT_PASSWORD.txt
+    MYSQL_PASSWORD:
+        file: ./secrets/MYSQL_PASSWORD.txt
+services:
+    database:
+        container_name: phrasebook-mysql
+        image: mysql:8.0
+        command: --default-authentication-plugin=mysql_native_password
+        restart: unless-stopped
+        secrets:
+            - MYSQL_ROOT_PASSWORD
+            - MYSQL_PASSWORD
+        environment:
+            MYSQL_ROOT_PASSWORD_FILE: /run/secrets/MYSQL_ROOT_PASSWORD
+            MYSQL_PASSWORD_FILE: /run/secrets/MYSQL_PASSWORD
+            MYSQL_DATABASE: phrasebook
+            MYSQL_USER: phrasebook
+            TZ: Asia/Tehran
+        volumes: 
+            - ~/phrasebook-db-data:/var/lib/mysql
+        ports:
+            - 3306:3306
+        networks:
+            - phrasebook_net
+    
+    apiserver:
+        container_name: phrasebook-api
+        build:
+            context: backend
+            dockerfile: api.Dockerfile
+        links:
+          - php
+        depends_on: 
+            - php
+        networks:
+            - phrasebook_net
+
+    php:
+        container_name: phrasebook-php
+        build:
+            dockerfile: php.Dockerfile
+            context: backend
+        volumes:
+            - ./backend:/srv/backend
+        networks:
+            - phrasebook_net
+
+    web:
+        container_name: phrasebook-web
+        build:
+            dockerfile: Dockerfile
+            context: frontend
+        ports:
+          - 9090:80
+        links:
+          - apiserver
+        depends_on:
+            - apiserver
+        networks:
+            - phrasebook_net
