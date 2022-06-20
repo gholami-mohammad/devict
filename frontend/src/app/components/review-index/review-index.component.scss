@@ -1,6 +1,18 @@
 .word {
-  cursor: help;
-  .word-info {
-    font-size: large;
+  display: flex !important;
+  flex-wrap: nowrap;
+  align-content: stretch;
+  align-items: center;
+  justify-content: center;
+
+  h1 {
+    cursor: help;
+    display: inline-block;
+    text-align: center;
+    margin-right: 6px;
+
+    .word-info {
+      font-size: large;
+    }
   }
 }
