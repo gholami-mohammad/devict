@@ -1,3 +1,5 @@
+FROM mysql:8.0 as mysql
+
 FROM php:8.1-fpm
 
 ENV TZ=Asia/Tehran
@@ -17,6 +19,9 @@ COPY . /srv/backend
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN chmod 777 storage/logs -R
 RUN chmod 777 storage/framework -R
+
+# Copy mysql client binary files
+COPY --from=mysql /usr/bin/mysqldump /usr/bin/mysqldump
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
 
