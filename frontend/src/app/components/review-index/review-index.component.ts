@@ -61,6 +61,7 @@ export class ReviewIndexComponent implements OnInit {
     this.reviewService.save(this.reviewing.id, remembered).subscribe({
       next: res => {
         this.loading = false;
+        this.showTranslations = false;
         this.next();
       },
       error: err => {
