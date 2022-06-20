@@ -58,7 +58,8 @@ class DatabaseBackupController extends Controller
         $filePath = Storage::path(sprintf('%s/%s.sql', self::BACKUP_DIR, date('Y-m-d_H-i-s')));
         Storage::makeDirectory(self::BACKUP_DIR);
 
-        exec("mysqldump --no-tablespaces --user={$username} --password={$password} --host={$host} --port={$port} {$database} --result-file={$filePath} 2>&1", $result);
+        $cmd = "mysqldump --no-tablespaces --user={$username} --password={$password} --host={$host} --port={$port} {$database} --result-file={$filePath} 2>&1";
+        exec($cmd, $result);
 
         return $this->messageResponse('Backup taken', 200);
     }
