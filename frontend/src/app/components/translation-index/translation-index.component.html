@@ -25,6 +25,12 @@
             {{translation.translation}}
           </div>
         </div>
+        <div class="mt-1 mb-3 pb-3 border-bottom">
+          <label for="part_of_speech" class="form-label text-primary">Part Of Speech</label>
+          <div class="col-12 align-left">
+            {{translation.part_of_speech_name}}
+          </div>
+        </div>
         <div class="mb-3 pb-3 border-bottom">
           <label for="definition" class="form-label text-info">Definition: </label>
           <app-text-to-speech [text]="translation.definition ?? ''"></app-text-to-speech>
