@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -45,6 +45,7 @@ import { GoogleTheTextComponent } from './components/google-the-text/google-the-
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     SimpleModalModule.forRoot({ container: 'modal-container'}, {
       closeOnEscape: true,
       closeOnClickOutside: false,

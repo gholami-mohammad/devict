@@ -11,8 +11,13 @@ export class WordService {
 
   constructor(private http: HttpClient) { }
 
-  index(page: number, perPage: number) {
-    return this.http.get<Pagination<Word>>('/api/words', {params: new HttpParams().set('page', page).set('per_page', perPage)});
+  index(page: number, perPage: number, searchText?: string) {
+    let params = new HttpParams().set('page', page).set('per_page', perPage);
+    if (searchText) {
+      params = params.set('q', searchText);
+    }
+
+    return this.http.get<Pagination<Word>>('/api/words', {params: params});
   }
 
   save(word: Word) {

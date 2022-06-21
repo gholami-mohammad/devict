@@ -19,9 +19,15 @@ class WordController extends Controller
     {
         $user = Auth::user();
 
-        $items = Word::with(['reviews'])
-        ->where('created_by_id', $user->id)
-        ->orderBy('id', 'desc')
+        $searchedtext = trim($r->input('q'));
+
+        $qry = Word::with(['reviews'])
+        ->where('created_by_id', $user->id);
+
+        if (!empty($searchedtext)) {
+            $qry = $qry->where('word', 'like', "%$searchedtext%");
+        }
+        $items = $qry->orderBy('id', 'desc')
         ->paginate($r->input('per_page', 50));
 
         return response()->json($items);
