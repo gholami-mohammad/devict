@@ -22,6 +22,7 @@ import { GoogleTranslatorComponent } from './components/google-translator/google
 import { ReviewIndexComponent } from './components/review-index/review-index.component';
 import { TextToSpeechComponent } from './components/text-to-speech/text-to-speech.component';
 import { DatabaseBackupIndexComponent } from './components/database-backup-index/database-backup-index.component';
+import { GoogleTheTextComponent } from './components/google-the-text/google-the-text.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { DatabaseBackupIndexComponent } from './components/database-backup-index
     ReviewIndexComponent,
     TextToSpeechComponent,
     DatabaseBackupIndexComponent,
+    GoogleTheTextComponent,
   ],
   imports: [
     BrowserModule,

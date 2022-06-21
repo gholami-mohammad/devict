@@ -9,6 +9,7 @@
         </small>
       </h1>
       <app-text-to-speech [text]="reviewing.word"></app-text-to-speech>
+      <app-google-the-text [text]="reviewing.word"></app-google-the-text>
     </div>
     <div *ngIf="showTranslations">
       <app-translation-index [word]="reviewing" [loadTranslations]="false"></app-translation-index>
