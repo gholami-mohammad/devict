@@ -82,7 +82,6 @@ export class TranslationFormComponent extends SimpleModalComponent<{word: Word, 
   selectedEntryOfThirdParty(e: SelectedTranslation) {
     this.translation.translation = e.translation;
     this.translation.definition =  e.synonyms.join(', ');
-    this.translation.example = e.examples.join('\n');
     this.translation.part_of_speech_name = e.part_of_speech;
   }
 }
