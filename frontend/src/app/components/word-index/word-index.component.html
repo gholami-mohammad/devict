@@ -21,9 +21,7 @@
           <tr *ngFor="let w of pagination.data">
             <td>{{w.word}}</td>
             <td>
-              <span class="badge bg-info m-1">{{w.total_reviews_count}}</span>
-              <span class="badge bg-success">{{w.success_reviews_count}}</span>
-              <span class="badge bg-danger m-1">{{w.fail_reviews_count}}</span>
+              <app-review-status [word]="w"></app-review-status>
             </td>
             <td class="actions">
               <button class="btn btn-outline-primary" (click)="edit(w)">

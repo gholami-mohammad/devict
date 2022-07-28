@@ -11,6 +11,9 @@
       <app-text-to-speech [text]="reviewing.word"></app-text-to-speech>
       <app-google-the-text [text]="reviewing.word"></app-google-the-text>
     </div>
+    <div class="d-block text-center">
+      <app-review-status [word]="reviewing"></app-review-status>
+    </div>
     <div *ngIf="showTranslations">
       <app-translation-index [word]="reviewing" [loadTranslations]="false"></app-translation-index>
     </div>
