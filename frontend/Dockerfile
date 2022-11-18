@@ -4,7 +4,7 @@ COPY ./ /build/
 RUN npm config rm proxy
 RUN npm config rm https-proxy
 RUN npm install
-RUN npm run build
+RUN npm run build --prod
 
 FROM nginx:latest
 COPY --from=builder /build/dist/phrase-book/ /srv/frontend
