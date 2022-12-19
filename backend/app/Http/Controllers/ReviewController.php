@@ -35,7 +35,8 @@ class ReviewController extends Controller
         (SELECT DATE_ADD(words.last_review, INTERVAL (SELECT days from steps where words.step_id = steps.id) DAY) ) <= (SELECT DATE_ADD(NOW(), INTERVAL 8 HOUR) )
         )')
         ->orderBy('step_id', 'DESC')
-        ->orderBy('last_review', 'asc');
+        ->orderBy('last_review', 'asc')
+        ->orderBy('id', 'DESC');
         $words = $qry->paginate(50);
 
         return response()->json($words);
