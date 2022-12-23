@@ -36,6 +36,7 @@ class ReviewController extends Controller
         )')
         ->orderBy('step_id', 'DESC')
         ->orderBy('last_review', 'asc')
+        ->orderBy('created_at', 'desc')
         ->orderBy('id', 'DESC');
         $words = $qry->paginate(50);
 
