@@ -30,7 +30,7 @@ class StoreTranslationRequest extends FormRequest
     {
         return [
             'part_of_speech_name' => ['nullable', Rule::exists((new PartOfSpeech())->getTable(), 'name')],
-            'translation' => ['required', new TranslationUnique(null)],
+            'translation' => ['required'],
             'language_alpha2code' => ['required', Rule::exists((new Language())->getTable(), 'alpha2code')],
             'word_id' => ['required'],
         ];

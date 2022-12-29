@@ -29,7 +29,7 @@ class UpdateTranslationRequest extends FormRequest
     public function rules()
     {
         return [
-            'translation' => ['required', new TranslationUnique($this->route('translation')->id)],
+            'translation' => ['required'],
             'part_of_speech_name' => ['nullable', Rule::exists((new PartOfSpeech())->getTable(), 'name')],
             'language_alpha2code' => ['required', Rule::exists((new Language())->getTable(), 'alpha2code')],
             'word_id' => ['required'],
