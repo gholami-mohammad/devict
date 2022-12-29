@@ -41,7 +41,7 @@ class WordController extends Controller
      */
     public function store(StoreWordRequest $request)
     {
-        $wordToSave = strtolower($request->input('word', null));
+        $wordToSave = $request->input('word', null);
         $from = $request->input('language_alpha2code', null);
 
         $word = new Word();
@@ -78,7 +78,7 @@ class WordController extends Controller
     public function update(UpdateWordRequest $request, Word $word)
     {
         $this->authorize('update', $word);
-        $wordToSave = strtolower($request->input('word', null));
+        $wordToSave = $request->input('word', null);
         $from = $request->input('language_alpha2code', null);
 
         $word->word = $wordToSave;
