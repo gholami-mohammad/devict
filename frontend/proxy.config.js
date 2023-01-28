@@ -3,7 +3,7 @@ const PROXY_CONFIG = {
     target: {
       host: 'localhost',
       protocol: 'http:',
-      port: 8000,
+      port: 9090,
     },
     secure: false,
     changeOrigin: true,
