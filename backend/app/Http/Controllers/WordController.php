@@ -21,7 +21,7 @@ class WordController extends Controller
 
         $searchedtext = trim($r->input('q'));
 
-        $qry = Word::with(['reviews'])
+        $qry = Word::with(['reviews', 'step'])
         ->where('created_by_id', $user->id);
 
         if (!empty($searchedtext)) {
@@ -64,7 +64,7 @@ class WordController extends Controller
     public function show(Word $word)
     {
         $this->authorize('view', $word);
-        $word->load(['translations', 'reviews']);
+        $word->load(['translations', 'reviews', 'step']);
         return response()->json($word);
     }
 

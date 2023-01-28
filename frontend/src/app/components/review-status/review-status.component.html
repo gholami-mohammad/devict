@@ -1,3 +1,6 @@
 <span class="badge bg-info m-1" title="Totla Reviews">{{word.total_reviews_count}}</span>
 <span class="badge bg-success" title="Successful Reviews">{{word.success_reviews_count}}</span>
 <span class="badge bg-danger m-1" title="Failed Reviews">{{word.fail_reviews_count}}</span>
+<span class="badge bg-secondary" *ngIf="word.step">
+  {{word.step.name}}
+</span>
