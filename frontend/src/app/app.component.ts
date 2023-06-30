@@ -8,6 +8,7 @@ import { UserAuthService } from './services/user-auth.service';
 })
 export class AppComponent implements OnInit {
   title = 'devict';
+  navCollapse = true;
 
   constructor(public authService: UserAuthService) {}
 

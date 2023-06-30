@@ -1,11 +1,11 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light">
   <div class="container">
     <a class="navbar-brand" href="#">Devict</a>
-    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId"
+    <button (click)="navCollapse = !navCollapse" class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId"
       aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavId">
+    <div class="navbar-collapse" id="collapsibleNavId" [class.collapse]="navCollapse">
       <ul class="navbar-nav me-auto mt-2 mt-lg-0">
         <li class="nav-item" *ngIf="authService.authenticatedUser">
           <a class="nav-link" routerLink="/words">
