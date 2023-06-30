@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { SimpleModalService } from 'ngx-simple-modal';
 import { ToastrService } from 'ngx-toastr';
 import { debounceTime } from 'rxjs';
@@ -18,7 +18,7 @@ export class WordIndexComponent implements OnInit {
   loading = true;
   pagination: Pagination<Word> = new Pagination();
   page = 1;
-  searchFormControl: FormControl = new FormControl();
+  searchFormControl: UntypedFormControl = new UntypedFormControl();
 
   constructor(private wordService: WordService, private modal: SimpleModalService, private errService: ErrorHandlerService, private toastr: ToastrService) {}
 
