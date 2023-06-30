@@ -84,6 +84,7 @@ class WordController extends Controller
         $word->word = $wordToSave;
         $word->language_alpha2code = $from;
         $word->created_by_id = Auth::user()->id;
+        $word->updated_at = now();
         $word->save();
 
         $word->translations;
