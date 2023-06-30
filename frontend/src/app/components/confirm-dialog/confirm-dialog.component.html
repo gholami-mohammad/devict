@@ -1,0 +1,14 @@
+<div class="modal-content modal-sm">
+  <div class="modal-header" [ngClass]="config.headerClass">
+    <h4>
+      {{config.title}}
+    </h4>
+  </div>
+  <div class="modal-body" *ngIf="config.message && config.message != ''">
+    {{config.message}}
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn" [ngClass]="config.cancelBtnClass" (click)="close()" >{{config.cancelLabel}}</button>
+    <button type="submit" class="btn btn-wide" [ngClass]="config.confirmBtnClass" (click)="confirmed()">{{config.confirmLabel}}</button>
+  </div>
+</div>

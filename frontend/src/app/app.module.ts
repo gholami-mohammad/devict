@@ -24,6 +24,7 @@ import { DatabaseBackupIndexComponent } from './components/database-backup-index
 import { GoogleTheTextComponent } from './components/google-the-text/google-the-text.component';
 import { ReviewStatusComponent } from './components/review-status/review-status.component';
 import { NgxModalView } from 'ngx-modalview';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { NgxModalView } from 'ngx-modalview';
     DatabaseBackupIndexComponent,
     GoogleTheTextComponent,
     ReviewStatusComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,

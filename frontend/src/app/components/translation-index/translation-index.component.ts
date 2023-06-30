@@ -6,6 +6,7 @@ import { ErrorHandlerService } from 'src/app/services/error-handler.service';
 import { TranslationService } from 'src/app/services/translation.service';
 import { TranslationFormComponent } from '../translation-form/translation-form.component';
 import { NgxModalService } from 'ngx-modalview';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-translation-index',
@@ -65,19 +66,32 @@ export class TranslationIndexComponent implements OnInit {
   }
 
   delete(translation: Translation) {
-    if (!confirm("Are you sure?")) {
-      return;
-    }
-    return this.translationService.delete(translation.id ?? 0).subscribe({
-      next: res => {
-        this.index();
-        this.toastr.success(res.message);
+    this.modal
+    .addModal(ConfirmDialogComponent, {
+      config: {
+        message: 'Are you sure to delete selected translation?',
+        confirmLabel: 'Yes, Delete it',
+        cancelLabel: 'Cancel',
+        title: 'WARNING',
       },
-      error: err => {
-        this.errService.HandleResponseErrors(err);
-        this.loading = false;
-      },
+    })
+    .subscribe((res) => {
+      if (!res) {
+        return;
+      }
+
+      this.translationService.delete(translation.id ?? 0).subscribe({
+        next: res => {
+          this.index();
+          this.toastr.success(res.message);
+        },
+        error: err => {
+          this.errService.HandleResponseErrors(err);
+          this.loading = false;
+        },
+      });
     });
+
   }
 
 }
