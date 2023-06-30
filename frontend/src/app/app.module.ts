@@ -46,8 +46,8 @@ import { ReviewStatusComponent } from './components/review-status/review-status.
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
+    FormsModule.withConfig({}),
+    ReactiveFormsModule.withConfig({}),
     SimpleModalModule.forRoot({ container: 'modal-container'}, {
       closeOnEscape: true,
       closeOnClickOutside: false,
