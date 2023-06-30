@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SimpleModalService } from 'ngx-simple-modal';
 import { ToastrService } from 'ngx-toastr';
 import { Word } from 'src/app/models/word';
 import { ErrorHandlerService } from 'src/app/services/error-handler.service';

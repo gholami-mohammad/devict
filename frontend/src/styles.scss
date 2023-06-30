@@ -1,8 +1,8 @@
-@import '~ngx-simple-modal/styles/simple-modal.scss';
-@import '~ngx-toastr/toastr';
-@import '~bootstrap/scss/bootstrap.scss';
-@import "~@ng-select/ng-select/themes/default.theme.css";
-@import "~bootstrap-icons/font/bootstrap-icons.scss";
+@import '../node_modules/ngx-modalview/styles/ngx-modal.scss';
+@import '../node_modules/ngx-toastr/toastr';
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+@import "../node_modules/@ng-select/ng-select/themes/default.theme.css";
+@import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
 
 .rtl {
   direction: rtl !important;

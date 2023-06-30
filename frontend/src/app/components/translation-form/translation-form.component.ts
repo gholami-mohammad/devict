@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { SimpleModalComponent } from 'ngx-simple-modal';
+import { NgxModalComponent } from 'ngx-modalview';
 import { ToastrService } from 'ngx-toastr';
 import { SelectedTranslation } from 'src/app/models/third-party-translation';
 import { Translation } from 'src/app/models/translation';
@@ -14,7 +14,7 @@ import { TranslationService } from 'src/app/services/translation.service';
   templateUrl: './translation-form.component.html',
   styleUrls: ['./translation-form.component.scss']
 })
-export class TranslationFormComponent extends SimpleModalComponent<{word: Word, translation: Translation}, boolean> implements OnInit {
+export class TranslationFormComponent extends NgxModalComponent<{word: Word, translation: Translation}, boolean> implements OnInit {
 
   loading = false;
   errors: any = {};

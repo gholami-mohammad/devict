@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
-import { SimpleModalService } from 'ngx-simple-modal';
 import { ToastrService } from 'ngx-toastr';
 import { debounceTime } from 'rxjs';
 import { Word } from 'src/app/models/word';
@@ -8,6 +7,7 @@ import { ErrorHandlerService } from 'src/app/services/error-handler.service';
 import { WordService } from 'src/app/services/word.service';
 import { Pagination } from '../pagination/pagination-model';
 import { WordFormComponent } from '../word-form/word-form.component';
+import { NgxModalService } from "ngx-modalview";
 
 @Component({
   selector: 'app-word-index',
@@ -20,7 +20,7 @@ export class WordIndexComponent implements OnInit {
   page = 1;
   searchFormControl: UntypedFormControl = new UntypedFormControl();
 
-  constructor(private wordService: WordService, private modal: SimpleModalService, private errService: ErrorHandlerService, private toastr: ToastrService) {}
+  constructor(private wordService: WordService, private modal: NgxModalService, private errService: ErrorHandlerService, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.index(this.page);

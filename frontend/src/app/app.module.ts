@@ -10,7 +10,6 @@ import { SecHeadersInterceptor } from './services/sec-headers.interceptor';
 import { WordIndexComponent } from './components/word-index/word-index.component';
 import { HomeComponent } from './components/home/home.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
-import { SimpleModalModule } from 'ngx-simple-modal';
 import { WordFormComponent } from './components/word-form/word-form.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { ErrorHandlerService } from './services/error-handler.service';
@@ -24,6 +23,7 @@ import { TextToSpeechComponent } from './components/text-to-speech/text-to-speec
 import { DatabaseBackupIndexComponent } from './components/database-backup-index/database-backup-index.component';
 import { GoogleTheTextComponent } from './components/google-the-text/google-the-text.component';
 import { ReviewStatusComponent } from './components/review-status/review-status.component';
+import { NgxModalView } from 'ngx-modalview';
 
 @NgModule({
   declarations: [
@@ -48,7 +48,7 @@ import { ReviewStatusComponent } from './components/review-status/review-status.
     HttpClientModule,
     FormsModule.withConfig({}),
     ReactiveFormsModule.withConfig({}),
-    SimpleModalModule.forRoot({ container: 'modal-container'}, {
+    NgxModalView.forRoot({ container: 'modal-container'}, {
       closeOnEscape: true,
       closeOnClickOutside: false,
       wrapperDefaultClasses: 'modal',

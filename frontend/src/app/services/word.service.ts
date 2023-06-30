@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Pagination } from '../components/pagination/pagination-model';
 import { SaveResponse, MessageResponse } from '../models/response-models';
 import { Word } from '../models/word';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class WordService {
 
   constructor(private http: HttpClient) { }
 
-  index(page: number, perPage: number, searchText?: string) {
+  index(page: number, perPage: number, searchText?: string): Observable<Pagination<Word>> {
     let params = new HttpParams().set('page', page).set('per_page', perPage);
     if (searchText) {
       params = params.set('q', searchText);
@@ -25,12 +26,12 @@ export class WordService {
     return this.http.post<SaveResponse<Word>>(path, word);
   }
 
-  details(wordID: number) {
+  details(wordID: number): Observable<Word> {
     const path = `/api/words/${wordID}`;
     return this.http.get<Word>(path);
   }
 
-  delete(wordID: number) {
+  delete(wordID: number): Observable<MessageResponse> {
     const path = `/api/words/${wordID}`;
     return this.http.delete<MessageResponse>(path);
   }

@@ -1,7 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { SimpleModalComponent } from 'ngx-simple-modal';
+import { NgxModalComponent } from 'ngx-modalview';
 import { ToastrService } from 'ngx-toastr';
+import { SaveResponse } from 'src/app/models/response-models';
 import { Word } from 'src/app/models/word';
 import { ErrorHandlerService } from 'src/app/services/error-handler.service';
 import { WordService } from 'src/app/services/word.service';
@@ -11,7 +12,7 @@ import { WordService } from 'src/app/services/word.service';
   templateUrl: './word-form.component.html',
   styleUrls: ['./word-form.component.scss']
 })
-export class WordFormComponent extends SimpleModalComponent<{word: Word}, boolean> implements OnInit {
+export class WordFormComponent extends NgxModalComponent<{word: Word}, boolean> implements OnInit {
   loading = false;
   errors: any = {};
   word: Word = new Word();
@@ -34,7 +35,7 @@ export class WordFormComponent extends SimpleModalComponent<{word: Word}, boolea
     this.errors = {};
 
     this.wordService.save(this.word).subscribe({
-      next: res => {
+      next: (res: SaveResponse<Word>) => {
         this.word = res.data as Word;
         this.loading = false;
         this.result = true;

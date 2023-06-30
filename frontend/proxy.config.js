@@ -1,5 +1,5 @@
 const PROXY_CONFIG = {
-  '/api/*': {
+  '/api/': {
     target: {
       host: 'localhost',
       protocol: 'http:',

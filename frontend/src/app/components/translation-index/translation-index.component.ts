@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SimpleModalService } from 'ngx-simple-modal';
 import { ToastrService } from 'ngx-toastr';
 import { Translation } from 'src/app/models/translation';
 import { Word } from 'src/app/models/word';
 import { ErrorHandlerService } from 'src/app/services/error-handler.service';
 import { TranslationService } from 'src/app/services/translation.service';
 import { TranslationFormComponent } from '../translation-form/translation-form.component';
+import { NgxModalService } from 'ngx-modalview';
 
 @Component({
   selector: 'app-translation-index',
@@ -18,7 +18,7 @@ export class TranslationIndexComponent implements OnInit {
   @Input() loadTranslations = true;
   loading = true;
 
-  constructor(private translationService: TranslationService, private modal: SimpleModalService, private errService: ErrorHandlerService, private toastr: ToastrService) {}
+  constructor(private translationService: TranslationService, private modal: NgxModalService, private errService: ErrorHandlerService, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     if (this.loadTranslations) {
