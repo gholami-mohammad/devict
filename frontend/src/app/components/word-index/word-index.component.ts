@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { debounceTime } from 'rxjs';
@@ -18,7 +18,7 @@ import {
   templateUrl: './word-index.component.html',
   styleUrls: ['./word-index.component.scss'],
 })
-export class WordIndexComponent implements OnInit {
+export class WordIndexComponent implements OnInit, AfterViewInit, OnDestroy {
   loading = true;
   pagination: Pagination<Word> = new Pagination();
   page = 1;
@@ -41,6 +41,29 @@ export class WordIndexComponent implements OnInit {
     });
   }
 
+  ngAfterViewInit(): void {
+    this.registerHotkeys();
+  }
+
+  ngOnDestroy(): void {
+    this.unregisterHotKeys();
+  }
+
+
+  registerHotkeys() {
+    document.onkeydown = (e) => {
+      if (e.code == 'F1') {
+        e.preventDefault();
+        this.add();
+      }
+    };
+  }
+
+  unregisterHotKeys() {
+    document.onkeydown = (e) => {
+    };
+  }
+
   index(page: number, searchText?: string) {
     return this.wordService.index(page, 50, searchText).subscribe({
       next: (res) => {
@@ -54,11 +77,13 @@ export class WordIndexComponent implements OnInit {
   }
 
   add() {
+    this.unregisterHotKeys();
     this.modal
       .addModal(WordFormComponent, {
         word: new Word(),
       })
       .subscribe((res) => {
+        this.registerHotkeys()
         if (res) {
           this.index(this.page);
         }
@@ -66,11 +91,13 @@ export class WordIndexComponent implements OnInit {
   }
 
   edit(word: Word) {
+    this.unregisterHotKeys();
     this.modal
       .addModal(WordFormComponent, {
         word: word,
       })
       .subscribe((res) => {
+        this.registerHotkeys()
         if (res) {
           this.index(this.page);
         }

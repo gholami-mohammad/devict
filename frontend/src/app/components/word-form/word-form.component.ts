@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { NgxModalComponent } from 'ngx-modalview';
 import { ToastrService } from 'ngx-toastr';
 import { SaveResponse } from 'src/app/models/response-models';
@@ -12,7 +12,7 @@ import { WordService } from 'src/app/services/word.service';
   templateUrl: './word-form.component.html',
   styleUrls: ['./word-form.component.scss']
 })
-export class WordFormComponent extends NgxModalComponent<{word: Word}, boolean> implements OnInit {
+export class WordFormComponent extends NgxModalComponent<{word: Word}, boolean> implements OnInit, AfterViewInit, OnDestroy {
   loading = false;
   errors: any = {};
   word: Word = new Word();
@@ -28,6 +28,37 @@ export class WordFormComponent extends NgxModalComponent<{word: Word}, boolean> 
     if (this.word.id) {
       this.getDetails();
     }
+
+  }
+
+  ngAfterViewInit(): void {
+    this.registerHotkeys();
+  }
+
+  ngOnDestroy(): void {
+    this.unregisterHotKeys();
+  }
+
+  registerHotkeys() {
+    document.onkeydown = (e) => {
+      if (e.code == 'F2') {
+        e.preventDefault();
+        this.save(false);
+      }
+      if (e.code == 'F3') {
+        e.preventDefault();
+        this.save(true);
+      }
+      if (e.code == 'Escape') {
+        e.preventDefault();
+        this.close();
+      }
+    };
+  }
+
+  unregisterHotKeys() {
+    document.onkeydown = (e) => {
+    };
   }
 
   save(close = false) {
