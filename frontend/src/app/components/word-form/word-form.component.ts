@@ -30,7 +30,7 @@ export class WordFormComponent extends NgxModalComponent<{word: Word}, boolean> 
     }
   }
 
-  save() {
+  save(close = false) {
     this.loading = true;
     this.errors = {};
 
@@ -40,7 +40,9 @@ export class WordFormComponent extends NgxModalComponent<{word: Word}, boolean> 
         this.loading = false;
         this.result = true;
         this.toastr.success(res.message);
-        this.close();
+        if (close) {
+          this.close();
+        }
       },
       error: (err: HttpErrorResponse) => {
         this.errors = this.errService.HandleResponseErrors(err);
